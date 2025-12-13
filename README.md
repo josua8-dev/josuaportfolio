@@ -10,7 +10,7 @@ Welcome to my Portfolio! Here I will show you my Projects I am currently working
 ## Reach my Website
 
 You can view my Website by following this link: 
-[Live-Website](https://josua-08.github.io/josuaportfolio/)
+[Live-Website](https://josua8-dev.github.io/josuaportfolio/)
 
 ---
 
