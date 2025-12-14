@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #000000, #1a1a1a);
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #fff, #e0e0e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #a0a0a0;
+            line-height: 1.6;
+        }
+
+        .game-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 12px;
+            padding: 15px 25px;
+            font-size: 1.2rem;
+            color: white;
+            width: 200px;
+            margin-bottom: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .game-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+        }
+
+        .submit-btn {
+            background: linear-gradient(90deg, #007AFF, #0055FF);
+            border: none;
+            border-radius: 12px;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 122, 255, 0.3);
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            min-height: 1.5em;
+            color: #a0a0a0;
+        }
+
+        .correct {
+            color: #34C759;
+        }
+
+        .wrong {
+            color: #FF3B30;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Number Guessing Game</h1>
+        <p>Ich denke an eine Zahl zwischen 1 und 20.<br>Kannst du sie erraten?</p>
+        <input type="number" class="game-input" min="1" max="20">
+        <br>
+        <button class="submit-btn">Zahl eingeben</button>
+        <div class="message"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.querySelector('.game-input');
+            const button = document.querySelector('.submit-btn');
+            const message = document.querySelector('.message');
+            const container = document.querySelector('.container');
+            
+            let targetNumber = Math.floor(Math.random() * 20) + 1;
+            
+            const checkGuess = () => {
+                const guess = parseInt(input.value);
+                
+                if (isNaN(guess) || guess < 1 || guess > 20) {
+                    message.textContent = 'Bitte gib eine Zahl zwischen 1 und 20 ein.';
+                    message.className = 'message wrong';
+                    container.classList.add('shake');
+                    setTimeout(() => container.classList.remove('shake'), 300);
+                    return;
+                }
+                
+                if (guess === targetNumber) {
+                    message.textContent = 'Richtig! Du hast die Zahl gefunden! 🎉';
+                    message.className = 'message correct';
+                    button.textContent = 'Neues Spiel';
+                    button.removeEventListener('click', checkGuess);
+                    button.addEventListener('click', resetGame);
+                } else {
+                    const hint = guess > targetNumber ? 'Die Zahl ist kleiner!' : 'Die Zahl ist größer!';
+                    message.textContent = hint;
+                    message.className = 'message wrong';
+                    container.classList.add('shake');
+                    setTimeout(() => container.classList.remove('shake'), 300);
+                }
+                
+                input.value = '';
+                input.focus();
+            };
+            
+            const resetGame = () => {
+                targetNumber = Math.floor(Math.random() * 20) + 1;
+                message.textContent = '';
+                message.className = 'message';
+                button.textContent = 'Überprüfen';
+                input.value = '';
+                button.removeEventListener('click', resetGame);
+                button.addEventListener('click', checkGuess);
+                input.focus();
+            };
+            
+            button.addEventListener('click', checkGuess);
+            
+            input.addEventListener('keyup', (event) => {
+                if (event.key === 'Enter') {
+                    button.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
