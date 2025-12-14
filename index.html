@@ -3,120 +3,135 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Josua — Developer, basketball player and student. Portfolio showcasing projects, skills and contact information."/>
-  <title>Josua — Portfolio</title>
+  <title>josua8-dev — Portfolio Website</title>
 
-  <!-- Google Inter font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome for icons -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <!-- Header Navigation -->
-  <header class="header">
+  <header class="header main-header">
     <nav class="nav-container">
-      <div class="logo">JOSUA</div>
+      <a href="index.html" class="logo">JOSUA</a>
       <ul class="nav-links">
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#hobbies" class="nav-link">Hobbies</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="tech.html" class="nav-link">Tech Stack</a></li>
+        <li><a href="projects.html" class="nav-link">Projects</a></li>
+        <li><a href="hobbies.html" class="nav-link">Hobbies</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
       </ul>
     </nav>
 
     <!-- Hero Section -->
     <div class="hero-container">
-      <h1 class="hero-title">Hi, I'm Josua</h1>
-      <p class="hero-subtitle">Developer, Basketball Player & Student</p>
-      <a href="#projects" class="apple-button">See my work</a>
-      <div class="scroll-indicator">
-        <div class="mouse"></div>
-        <p>Scroll to explore</p>
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="hero-header">
+            <h1 class="hero-title" style="color: #ffffff !important;">Josua</h1>
+            <div class="hero-social">
+              <a href="mailto:josua.rutt@outlook.de" class="social-icon" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+              <a href="https://github.com/josua8-dev" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://www.instagram.com/josua_0607/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+          <p class="hero-location"><i class="fas fa-map-marker-alt"></i> Germany</p>
+          <p class="hero-description">I'm an 18-year-old student and aspiring developer. I've been learning to code for over a year, focusing on Python, and I enjoy building small projects and games. I'm passionate about basketball, fitness, and continuous learning.</p>
+        </div>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- About Section -->
-    <section id="about" class="section about-section">
+    <!-- Tech Stack Section -->
+    <section id="tech" class="section tech-section">
       <div class="section-container">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-          <div class="about-text reveal-content">
-            <p>Hey! I'm Josua, 18 years old — a student and aspiring developer. I learn every day to get better at coding, especially Python, and I enjoy experimenting with small projects and games.[...]
-            <p>I spend a lot of time in the gym working on basketball. I'm inspired by players like Kobe Bryant and Kyrie Irving for their work ethic, creativity, and dedication.</p>
-            <p>In my free time I also enjoy fitness, running, and trying new sports and challenges. I see every experience as a chance to learn something new.</p>
-          </div>
-          <div class="about-image reveal-content">
-            <div class="profile-image-container">
-              <img src="images/me.jpg" alt="Josua" class="profile-image" loading="lazy" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="section skills-section">
-      <div class="section-container">
-        <h2 class="section-title">Skills & Tools</h2>
-        <div class="skills-grid">
-          <div class="skill-card reveal-content">
-            <div class="skill-icon">
+        <h2 class="section-title">What I work with</h2>
+        <div class="tech-scroll-wrapper">
+          <div class="tech-scroll">
+            <div class="tech-item">
               <i class="fab fa-python"></i>
+              <span>Python</span>
             </div>
-            <h3 class="skill-title">Python</h3>
-            <div class="skill-level">
-              <div class="skill-progress" data-level="7"></div>
+            <div class="tech-item">
+              <i class="fab fa-html5"></i>
+              <span>HTML</span>
             </div>
-            <p class="skill-description">Learning, exploring web scraping and small games.</p>
-          </div>
-
-          <div class="skill-card reveal-content">
-            <div class="skill-icon">
+            <div class="tech-item">
+              <i class="fab fa-css3-alt"></i>
+              <span>CSS</span>
+            </div>
+            <div class="tech-item">
               <i class="fas fa-gamepad"></i>
+              <span>Unity</span>
             </div>
-            <h3 class="skill-title">Unity / Game Dev</h3>
-            <div class="skill-level">
-              <div class="skill-progress" data-level="5"></div>
+            <div class="tech-item">
+              <i class="fab fa-git-alt"></i>
+              <span>Git</span>
             </div>
-            <p class="skill-description">Building games and experimenting with C# and mechanics.</p>
-          </div>
-
-          <div class="skill-card reveal-content">
-            <div class="skill-icon">
-              <i class="fas fa-code"></i>
+            <div class="tech-item">
+              <i class="fab fa-github"></i>
+              <span>GitHub</span>
             </div>
-            <h3 class="skill-title">C#</h3>
-            <div class="skill-level">
-              <div class="skill-progress" data-level="5"></div>
+            <!-- Duplicate for seamless loop -->
+            <div class="tech-item">
+              <i class="fab fa-python"></i>
+              <span>Python</span>
             </div>
-            <p class="skill-description">Learning fundamentals and coding small projects.</p>
-          </div>
-
-          <div class="skill-card reveal-content">
-            <div class="skill-icon">
-              <i class="fas fa-language"></i>
+            <div class="tech-item">
+              <i class="fab fa-html5"></i>
+              <span>HTML</span>
             </div>
-            <h3 class="skill-title">English</h3>
-            <div class="skill-level">
-              <div class="skill-progress" data-level="90"></div>
+            <div class="tech-item">
+              <i class="fab fa-css3-alt"></i>
+              <span>CSS</span>
             </div>
-            <p class="skill-description">Strong command, applying skills in coding & communication.</p>
+            <div class="tech-item">
+              <i class="fas fa-gamepad"></i>
+              <span>Unity</span>
+            </div>
+            <div class="tech-item">
+              <i class="fab fa-git-alt"></i>
+              <span>Git</span>
+            </div>
+            <div class="tech-item">
+              <i class="fab fa-github"></i>
+              <span>GitHub</span>
+            </div>
+             <div class="tech-item">
+              <i class="fab fa-python"></i>
+              <span>Python</span>
+            </div>
+            <div class="tech-item">
+              <i class="fab fa-html5"></i>
+              <span>HTML</span>
+            </div>
+            <div class="tech-item">
+              <i class="fab fa-css3-alt"></i>
+              <span>CSS</span>
+            </div>
+            <div class="tech-item">
+              <i class="fas fa-gamepad"></i>
+              <span>Unity</span>
+            </div>
+            <div class="tech-item">
+              <i class="fab fa-git-alt"></i>
+              <span>Git</span>
+            </div>
+            <div class="tech-item">
+              <i class="fab fa-github"></i>
+              <span>GitHub</span>
+            </div>
           </div>
         </div>
       </div>
@@ -125,106 +140,89 @@
     <!-- Projects Section -->
     <section id="projects" class="section projects-section">
       <div class="section-container">
-        <h2 class="section-title">Projects</h2>
-        <div class="projects-showcase">
+        <h2 class="section-title">My Projects</h2>
+        <div class="projects-grid">
           <div class="project-card reveal-content">
-            <div class="project-image-container">
-              <!-- added project-image class and loading to ensure the image fills the container -->
-              <img src="images/number-guessing-game.png" alt="Guess the Number Screenshot" class="project-image" loading="lazy" />
-            </div>
-            <div class="project-details">
-              <h3 class="project-title">Guess the Number</h3>
-              <p class="project-description">A simple Python/Flask web game to practice backend development. Beginner-friendly project to learn web integration.</p>
-              <a href="https://josua-08.github.io/josuaportfolio/number_guessing_game.html" target="_blank" rel="noopener noreferrer" class="apple-link">
-                <span>Website</span>
-                <i class="fas fa-arrow-right"></i>
-              </a>
+            <div class="project-card-inner">
+              <div class="project-background" style="background-image: url('images/ngg.png');"></div>
+              <div class="project-overlay">
+                <div class="project-content">
+                  <h3 class="project-title">Guess the Number</h3>
+                  <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">HTML</span>
+                  </div>
+                  <p class="project-description">A simple Python/Flask web game to practice backend development. Beginner-friendly project to learn web integration.</p>
+                  <a href="https://josua8-dev.github.io/josuaportfolio/number_guessing_game.html" target="_blank" rel="noopener noreferrer" class="project-link">
+                    Learn more <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
 
           <div class="project-card reveal-content">
-            <div class="project-image-container">
-              <img src="images/apple.png" alt="Portfolio Website Screenshot" class="project-image" loading="lazy" />
-            </div>
-            <div class="project-details">
-              <h3 class="project-title">Portfolio Website</h3>
-              <p class="project-description">My Apple-inspired portfolio website, built with HTML, CSS, and JavaScript. Designed to showcase projects with elegance, minimalism, and interactive animati[...]</p>
-              <a href="https://josua-08.github.io/josuaportfolio/" target="_blank" rel="noopener noreferrer" class="apple-link">
-                <span>Live Site</span>
-                <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-            <div class="project-card reveal-content">
-            <div class="project-image-container">
-              <img src="images/tictactoe.png" alt="TicTacToe Window Screenshot" class="project-image" loading="lazy" />
-            </div>
-            <div class="project-details">
-              <h3 class="project-title">TicTacToe Game using Tkinter</h3>
-              <p class="project-description">A simple and interactive TicTacToe game I built in Python using the tkinter library to incorporate a GUI </p>
-              <a href="https://github.com/Josua-08/TicTacToe/tree/main" target="_blank" rel="noopener noreferrer" class="apple-link">
-                <span>GitHub Repo</span>
-                <i class="fas fa-arrow-right"></i>
-              </a>
+            <div class="project-card-inner">
+              <div class="project-background" style="background-image: url('images/apple.png');"></div>
+              <div class="project-overlay">
+                <div class="project-content">
+                  <h3 class="project-title">Portfolio Website</h3>
+                  <div class="tech-tags">
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                  </div>
+                  <p class="project-description">You are here right now! A clean portfolio website, built with HTML, CSS, and JavaScript. Designed to showcase what I have created so far.</p>
+                  <a href="https://josua8-dev.github.io/josuaportfolio/" target="_blank" rel="noopener noreferrer" class="project-link">
+                    Learn more <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
 
           <div class="project-card reveal-content">
-            <div class="project-image-container">
-              <img src="images/web_scraper.PNG" alt="Web Scraper Screenshot" class="project-image" loading="lazy" />
+            <div class="project-card-inner">
+              <div class="project-background" style="background-image: url('images/tictactoe.png');"></div>
+              <div class="project-overlay">
+                <div class="project-content">
+                  <h3 class="project-title">TicTacToe Game</h3>
+                  <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Tkinter</span>
+                  </div>
+                  <p class="project-description">A simple and interactive TicTacToe game I built in Python using the tkinter library to incorporate a GUI.</p>
+                  <a href="https://github.com/Josua-08/TicTacToe/tree/main" target="_blank" rel="noopener noreferrer" class="project-link">
+                    Learn more <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
             </div>
-            <div class="project-details">
-              <h3 class="project-title">Web Scraper</h3>
-              <p class="project-description">Basic Python scraper that collects quotes from websites and saves it to a text document.</p>
-              <div class="project-links">
-                <a href="https://quotes.toscrape.com/" target="_blank" rel="noopener noreferrer" class="apple-link">
-                  <span>Reference Site</span>
-                  <i class="fas fa-arrow-right"></i>
-                </a>
-                <a href="https://github.com/josua/web-scraper" target="_blank" rel="noopener noreferrer" class="apple-link">
-                  <span>GitHub Repo</span>
-                  <i class="fas fa-arrow-right"></i>
-                </a>
+          </div>
+
+          <div class="project-card reveal-content">
+            <div class="project-card-inner">
+              <div class="project-background" style="background-image: url('images/web_scraper.PNG');"></div>
+              <div class="project-overlay">
+                <div class="project-content">
+                  <h3 class="project-title">Web Scraper</h3>
+                  <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">BeautifulSoup</span>
+                  </div>
+                  <p class="project-description">Basic Python scraper that collects quotes from websites and saves it to a text document.</p>
+                  <a href="https://github.com/josua/web-scraper" target="_blank" rel="noopener noreferrer" class="project-link">
+                    Learn more <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- Hobbies & Sports Section -->
-    <section id="hobbies" class="section hobbies-section">
-      <div class="section-container">
-        <h2 class="section-title">Hobbies & Sports</h2>
-        <div class="hobbies-grid">
-          <div class="hobby-card reveal-content">
-            <div class="hobby-icon-container">
-              <i class="fas fa-basketball-ball"></i>
-            </div>
-            <h3 class="hobby-title">Basketball 🏀</h3>
-            <p class="hobby-description">perfecting my craft.</p>
-          </div>
-
-          <div class="hobby-card reveal-content">
-            <div class="hobby-icon-container">
-              <i class="fas fa-dumbbell"></i>
-            </div>
-            <h3 class="hobby-title">Fitness 💪</h3>
-            <p class="hobby-description">building strength, endurance, and focus.</p>
-          </div>
-
-          <div class="hobby-card reveal-content">
-            <div class="hobby-icon-container">
-              <i class="fas fa-running"></i>
-            </div>
-            <h3 class="hobby-title">Running 🏃‍♂️</h3>
-            <p class="hobby-description">Soon running a Marathon. Love pushing limits and exploring new ways to stay active.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    
     <!-- Contact Section -->
     <section id="contact" class="section contact-section">
       <div class="section-container">
@@ -250,7 +248,7 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
-      <p class="copyright">© 2025 Josua. Designed with Apple-inspired minimalism.</p>
+      <p class="copyright">© 2025 Josua. Designed with minimalism.</p>
     </div>
   </footer>
 
