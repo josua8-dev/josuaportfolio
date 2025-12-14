@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // If GSAP isn't available, reveal elements without animation
     if (!hasGSAP) {
         console.warn('GSAP not found — animations disabled. Elements will be revealed without animation.');
-        document.querySelectorAll('.reveal-content, .hero-title, .hero-subtitle, .apple-button').forEach(el => {
+        document.querySelectorAll('.reveal-content').forEach(el => {
             el.style.opacity = '1';
             el.style.transform = 'translateY(0)';
         });
@@ -29,12 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         try {
-            // faster, smaller movement for snappier feeling
-            gsap.set(element, { opacity: 0, y: 20 });
+            gsap.set(element, { opacity: 0, y: 30 });
             gsap.to(element, {
                 opacity: 1,
                 y: 0,
-                duration: 0.55,
+                duration: 0.6,
                 delay: d,
                 ease: 'power2.out'
             });
@@ -45,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Intersection observer wrapper (if available) - use a lower threshold so elements begin earlier
+    // Intersection observer wrapper (if available)
     if (hasIO) {
         const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
@@ -55,98 +54,77 @@ document.addEventListener('DOMContentLoaded', () => {
                     obs.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.06 }); // lower threshold triggers slightly earlier
+        }, { threshold: 0.1 });
 
         document.querySelectorAll('.reveal-content').forEach(el => observer.observe(el));
     } else {
         console.warn('IntersectionObserver not supported — revealing all .reveal-content immediately.');
-        document.querySelectorAll('.reveal-content').forEach((el, i) => animateElement(el, i * 0.04));
+        document.querySelectorAll('.reveal-content').forEach((el, i) => animateElement(el, i * 0.1));
     }
-
-    // Hero animations (staggered) - faster stagger
-    const heroElements = document.querySelectorAll('.hero-title, .hero-subtitle, .apple-button');
-    heroElements.forEach((el, index) => animateElement(el, index * 0.12));
-
-    // Skill bars animation
-    document.querySelectorAll('.skill-progress').forEach(bar => {
-        if (!bar) return;
-        const levelAttr = bar.getAttribute('data-level');
-        let level = parseInt(levelAttr ?? '50', 10);
-        if (!Number.isFinite(level) || level < 0) level = 0;
-        if (level > 100) level = 100;
-
-        if (hasGSAP) {
-            gsap.set(bar, { width: '0%' });
-        } else {
-            bar.style.width = '0%';
-        }
-
-        const targetToObserve = bar.parentElement ?? bar;
-
-        const runSkillAnimation = () => {
-            if (hasGSAP) {
-                try {
-                    gsap.to(bar, { width: `${level}%`, duration: 1.0, ease: 'power2.out' });
-                } catch (err) {
-                    console.error('GSAP skill animation error:', err);
-                    bar.style.width = `${level}%`;
-                }
-            } else {
-                bar.style.width = `${level}%`;
-            }
-        };
-
-        if (hasIO) {
-            const skillObserver = new IntersectionObserver((entries, skObs) => {
-                if (entries[0] && entries[0].isIntersecting) {
-                    runSkillAnimation();
-                    skObs.unobserve(entries[0].target);
-                }
-            }, { threshold: 0.06 });
-
-            skillObserver.observe(targetToObserve);
-        } else {
-            runSkillAnimation();
-        }
-    });
 
     // Navigation scroll effect
     const nav = document.querySelector('.nav-container');
     if (nav) {
         const onScroll = () => {
-            if (window.scrollY > 50) nav.classList.add('nav-scrolled');
-            else nav.classList.remove('nav-scrolled');
+            if (window.scrollY > 50) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
         };
         onScroll();
         window.addEventListener('scroll', onScroll, { passive: true });
     }
 
-    // Button hover effects (guarded)
-    document.querySelectorAll('.apple-button').forEach(button => {
-        if (!button) return;
-        button.addEventListener('pointerenter', () => {
-            if (!hasGSAP) {
-                button.style.transform = 'scale(1.05)';
-                return;
-            }
-            try {
-                gsap.to(button, { scale: 1.05, duration: 0.2 });
-            } catch (err) {
-                button.style.transform = 'scale(1.05)';
-            }
-        });
-
-        button.addEventListener('pointerleave', () => {
-            if (!button) return;
-            if (!hasGSAP) {
-                button.style.transform = 'scale(1)';
-                return;
-            }
-            try {
-                gsap.to(button, { scale: 1, duration: 0.2 });
-            } catch (err) {
-                button.style.transform = 'scale(1)';
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+            
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                const navHeight = nav?.offsetHeight || 60;
+                const targetPosition = target.offsetTop - navHeight;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
             }
         });
     });
+
+    // Pause tech scroll animation on hover
+    const techScroll = document.querySelector('.tech-scroll');
+    if (techScroll) {
+        techScroll.addEventListener('mouseenter', () => {
+            techScroll.style.animationPlayState = 'paused';
+        });
+        techScroll.addEventListener('mouseleave', () => {
+            techScroll.style.animationPlayState = 'running';
+        });
+    }
+
+    // Add stagger animation to project cards
+    if (hasIO) {
+        const projectObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                    projectObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            projectObserver.observe(card);
+        });
+    }
 });
